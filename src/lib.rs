@@ -1,3 +1,22 @@
+#![cfg_attr(feature = "dev", feature(plugin))]
+#![cfg_attr(feature = "dev", plugin(clippy))]
+
+#![cfg_attr(feature = "dev", deny(
+        missing_docs,
+        missing_debug_implementations,
+        missing_copy_implementations,
+        trivial_casts, 
+        trivial_numeric_casts,
+        unsafe_code,
+        unstable_features,
+        unused_import_braces, 
+        unused_qualifications
+        ))]
+
+#![cfg_attr(feature = "dev", allow(
+        unstable_features
+        ))]
+
 #![allow(non_snake_case)]
 #[allow(unused_imports)]
 #[macro_use]
@@ -22,5 +41,11 @@ pub use items::*;
 pub mod container;
 pub use container::Container;
 
-#[cfg(windows)] pub const NL: &'static str = "\r\n";
-#[cfg(not(windows))] pub const NL: &'static str = "\n";
+/// NL contains the host OS-specific line terminator. 
+/// This is done to allow the code to work properly on both Windows
+/// and UNIX-like OSes.
+#[cfg(windows)]
+pub const NL: &'static str = "\r\n";
+
+#[cfg(not(windows))]
+pub const NL: &'static str = "\n";
