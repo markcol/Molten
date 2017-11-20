@@ -3,5 +3,7 @@ Cargo.lock
 *.rs.bk
 tests/res.toml
 \.vscode/
-
+*.code-workspace
 *.txt
+
+
