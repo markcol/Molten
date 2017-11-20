@@ -29,7 +29,7 @@ impl<'a> Trivia<'a> {
             indent: "",
             comment_ws: "",
             comment: "",
-            trail: ::NL,
+            trail: "\n",
         }
     }
 }

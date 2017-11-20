@@ -15,14 +15,14 @@ functionality to Cargo itself.
 
 ### Goals
 
-- **Speed:** Molten is a one-pass parser which avoids allocation.
-- **Unopinionated:** Molten respects the way you wrote your document, to the letter.
-- **Fully addressable:** All toml elements can be edited, created, or deleted via the API.
+- *Speed*: Molten is a one-pass parser which avoids allocation.
+- *Unopinionated*: Molten respects the way you wrote your document, to the letter.
+- *Fully addressable*: All toml elements can be edited, created, or deleted via the API.
 
 ### Non-Goals
 
-- **Error recovery:** Molten does not try to correct recoverable errors.
-- **Serialization/Deserialization:** See [toml-rs](https://github.com/alexcrichton/toml-rs) for this.
+- *Error recovery*: Molten does not try to correct recoverable errors.
+- *Serialization/Deserialization*: See [toml-rs](https://github.com/alexcrichton/toml-rs) for this.
 
 # License
 
