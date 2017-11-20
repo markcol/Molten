@@ -15,10 +15,7 @@ install:
 build: false
 
 test_script:
-  - cargo test
+  - cargo build
+  - cargo test --verbose
   - rustdoc --test README.md -L target
   - cargo doc --no-deps || echo "skipping cargo doc"
-
-branches:
-  only:
-    - master
