@@ -1,6 +1,8 @@
 # Molten
 
-[![Build Status](https://travis-ci.org/LeopoldArkham/Molten.svg?branch=master)](https://travis-ci.org/LeopoldArkham/Molten)
+[![Travis-CI Build Status](https://travis-ci.org/LeopoldArkham/Molten.svg?branch=master)](https://travis-ci.org/LeopoldArkham/Molten)
+[![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/LeopoldArkham/Molten?svg=true)](https://ci.appveyor.com/project/LeopoldArkham/Molten)
+[![license-badge][]][license]
 
 ## [WIP] Molten - Style-preserving TOML parser.
 
@@ -11,13 +13,15 @@ used in [cargo-edit](https://github.com/killercup/cargo-edit), and, eventually, 
 functionality to Cargo itself.
 
 ### Goals
-- Speed: Molten is a one-pass parser which avoids allocation.
-- Unopinionated: Molten respects the way you wrote your document, to the letter.
-- Fully addressable: All toml elements can be edited, created, or deleted via the API.
+
+- **Speed:** Molten is a one-pass parser which avoids allocation.
+- **Unopinionated:** Molten respects the way you wrote your document, to the letter.
+- **Fully addressable:** All toml elements can be edited, created, or deleted via the API.
 
 ### Non-Goals
-- Error recovery: Molten does not try to correct recoverable errors.
-- Serialization/Deserialization: See [toml-rs](https://github.com/alexcrichton/toml-rs) for this.
+
+- **Error recovery:** Molten does not try to correct recoverable errors.
+- **Serialization/Deserialization:** See [toml-rs](https://github.com/alexcrichton/toml-rs) for this.
 
 # License
 
