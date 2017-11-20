@@ -5,5 +5,7 @@ tests/res.toml
 \.vscode/
 *.code-workspace
 *.txt
+\#*\#
+*~
 
 
