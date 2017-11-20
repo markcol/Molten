@@ -44,8 +44,8 @@ pub use container::Container;
 /// NL contains the host OS-specific line terminator. 
 /// This is done to allow the code to work properly on both Windows
 /// and UNIX-like OSes.
-#[cfg(target_os = "windows")]
-pub const NL: &'static str = "\r\n";
+// #[cfg(target_os = "windows")]
+// pub const NL: &'static str = "\r\n";
 
-#[cfg(not(target_os = "windows"))]
+// #[cfg(not(target_os = "windows"))]
 pub const NL: &'static str = "\n";
