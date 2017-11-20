@@ -55,4 +55,12 @@ impl<'a> Item<'a> {
     pub fn is_aot(&self) -> bool {
         self.discriminant() == 10
     }
+
+    pub fn integer(raw: &'a str) -> Item<'a> {
+        Item::Integer {
+            val: raw.parse::<i64>().unwrap(),
+            meta: Trivia::empty(),
+            raw: raw,
+        }
+    }
 }

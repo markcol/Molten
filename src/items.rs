@@ -262,14 +262,4 @@ impl<'a> Item<'a> {
             Str { ref mut meta, .. } => meta,
         }
     }
-
-    /// Hack for testing purposes in reconstruction.rs
-    /// Really belongs in the API
-    pub fn integer(raw: &'a str) -> Item<'a> {
-        Item::Integer {
-            val: raw.parse::<i64>().unwrap(),
-            meta: Trivia::empty(),
-            raw: raw,
-        }
-    }
 }
