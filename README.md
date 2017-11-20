@@ -2,7 +2,8 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/LeopoldArkham/Molten.svg?branch=master)](https://travis-ci.org/LeopoldArkham/Molten)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/LeopoldArkham/Molten?svg=true)](https://ci.appveyor.com/project/LeopoldArkham/Molten)
-[![license-badge][]][license]
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## [WIP] Molten - Style-preserving TOML parser.
 
