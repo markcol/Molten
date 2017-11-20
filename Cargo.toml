@@ -24,7 +24,7 @@ appveyor = { repository = "LeopoldArkham/Molten" }
 chrono = "0.3.0"
 pretty_assertions = "0.4.0"
 error-chain = "0.11.0"
-clippy= {version = "0.0.172", optional = true}
+clippy= {version = "*", optional = true}
 
 [dev-dependencies]
 test-case-derive = "0.1.4"
