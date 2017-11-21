@@ -1,24 +1,31 @@
-#![cfg_attr(feature = "dev", feature(plugin))]
-#![cfg_attr(feature = "dev", plugin(clippy))]
+//! Molten is a lossless TOML parser that preserves all comments, indentations, 
+//! whitespace and internal element ordering, and makes all of these fully 
+//! editable via an easy API. It is written with the intent of replacing the 
+//! current TOML parser used in cargo-edit, and, eventually, adding that
+//! functionality to Cargo itself.
 
-#![cfg_attr(feature = "dev", deny(
+#![deny(
+        unsafe_code
+        )]
+
+#![warn(
         missing_docs,
         missing_debug_implementations,
         missing_copy_implementations,
         trivial_casts, 
         trivial_numeric_casts,
-        unsafe_code,
-        unstable_features,
         unused_import_braces, 
         unused_qualifications
-        ))]
+        )]
 
-#![cfg_attr(feature = "dev", allow(
-        unstable_features
-        ))]
+#![allow(
+        unstable_features, 
+        non_snake_case,
+        unused_imports
+        )]
 
-#![allow(non_snake_case)]
-#[allow(unused_imports)]
+#![doc(test(attr(allow(unused_variables), deny(warnings))))]
+
 #[macro_use]
 extern crate pretty_assertions;
 extern crate chrono;

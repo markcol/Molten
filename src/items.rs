@@ -172,10 +172,10 @@ impl<'a> Item<'a> {
         match *self {
             WS(s) => s.into(),
             Comment(ref meta) => format!("{}{}{}", meta.indent, meta.comment, meta.trail),
-            Integer { ref raw, .. } => format!("{}", raw),
-            Float { ref raw, .. } => format!("{}", raw),
+            Integer { raw, .. } => format!("{}", raw),
+            Float { raw, .. } => format!("{}", raw),
             Bool { val, .. } => format!("{}", val),
-            DateTime { ref raw, .. } => format!("{}", raw),
+            DateTime { raw, .. } => format!("{}", raw),
             Array { ref val, .. } => {
                 let mut buf = String::new();
                 buf.push_str("[");
@@ -207,7 +207,7 @@ impl<'a> Item<'a> {
             }
             Str {
                 ref t,
-                ref original,
+                original,
                 ..
             } => {
                 match *t {

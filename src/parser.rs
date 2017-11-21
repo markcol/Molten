@@ -458,11 +458,10 @@ impl<'a> Parser<'a> {
     /// Parses a Key at the current position;
     /// WS before the key must be exhausted first at the callsite.
     fn parse_key(&mut self) -> Key<'a> {
-        let key = match self.current {
+        match self.current {
             '"' | '\'' => self.parse_quoted_key(),
             _ => self.parse_bare_key(),
-        };
-        key
+        }
     }
 
     /// Parses a key enclosed in either single or double quotes.
@@ -582,8 +581,7 @@ impl<'a> Parser<'a> {
         while !self.end() {
             if let Some((key, item)) = self.parse_item()? {
                 values.append(key, item)?;
-            } else {
-                if self.current == '[' {
+            } else if self.current == '[' {
                     let (_, name_next) = self.peek_table()?;
 
                     if Parser::is_child(name, name_next) {
@@ -607,12 +605,11 @@ impl<'a> Parser<'a> {
                         }
                     }
                     break;
-                } else {
-                    bail!(ErrorKind::InternalParserError(
-                        "parse_item() returned None on a non-bracket character."
-                            .into(),
+            } else {
+                bail!(ErrorKind::InternalParserError(
+                    "parse_item() returned None on a non-bracket character."
+                        .into(),
                     ))
-                }
             }
         }
         // @cleanup: undecided variant

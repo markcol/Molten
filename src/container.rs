@@ -1,15 +1,18 @@
+//! Container provides a container for items in a TOML file.
 use std::collections::HashMap;
 
 use items::*;
 use errors::*;
 
-#[derive(Debug, Clone, PartialEq)]
+/// Container hold a group of items from a `TOMLDocument`.
+#[derive(Debug, Clone, PartialEq, Default)]
 pub struct Container<'a> {
     pub(crate) map: HashMap<Key<'a>, usize>,
     pub(crate) body: Vec<(Option<Key<'a>>, Item<'a>)>,
 }
 
 impl<'a> Container<'a> {
+    /// Create a new Container and return it to the caller.
     pub fn new() -> Container<'a> {
         Container {
             map: HashMap::new(),
@@ -17,6 +20,7 @@ impl<'a> Container<'a> {
         }
     }
 
+    /// Append an item to the container.
     pub fn append<K: Into<Option<Key<'a>>>>(&mut self, _key: K, item: Item<'a>) -> Result<()> {
         let key = _key.into();
         if let Some(k) = key.clone() {
@@ -31,16 +35,14 @@ impl<'a> Container<'a> {
     }
 
     // @cleanup: minimize duplication with Item::as_string()
+    /// Converts a string slice to a wrapper type providing a &String interface.
     pub fn as_string(&self) -> String {
         let mut s = String::new();
         for (k, v) in self.body.clone().into_iter() {
             let cur: String = if k.is_some() {
                 match v {
                     Item::Table { is_array, .. } => {
-                        let (open, close) = match is_array {
-                            true => ("[[", "]]"),
-                            false => ("[", "]"),
-                        };
+                        let (open, close) = if is_array { ("[[", "]]") } else { ("[", "]") };
                         format!("{}{}{}{}{}{}{}{}",
                         v.meta().indent,
                         open,
@@ -89,6 +91,7 @@ impl<'a> Container<'a> {
         s
     }
 
+    /// Return a Container iterator.
     pub fn iter(&'a self) -> ContainerIterator<'a> {
         ContainerIterator {
             container: self,
@@ -96,6 +99,7 @@ impl<'a> Container<'a> {
         }
     }
 
+    /// Return an exhaustive Container iterator.
     pub fn iter_exhaustive(&self) -> ContainerIteratorExhaustive {
         ContainerIteratorExhaustive {
             container: self,
@@ -104,6 +108,8 @@ impl<'a> Container<'a> {
     }
 }
 
+/// Iterator that yields the items within a `Container`.
+#[derive(Debug)]
 pub struct ContainerIterator<'a> {
     container: &'a Container<'a>,
     current: usize,
@@ -118,18 +124,19 @@ impl<'a> Iterator for ContainerIterator<'a> {
             if self.current == self.container.body.len() {
                 return None;
             }
-            match self.container.body[self.current].1.is_value() {
-                true => {
-                    let r = Some(&self.container.body[self.current].1);
-                    self.current += 1;
-                    return r;
-                }
-                false => self.current += 1,
+            if self.container.body[self.current].1.is_value() {
+                let r = Some(&self.container.body[self.current].1);
+                self.current += 1;
+                return r;
+            } else {
+                self.current += 1;
             }
         }
     }
 }
 
+/// Iterator that yields all items within a `Container`.
+#[derive(Debug)]
 pub struct ContainerIteratorExhaustive<'a> {
     container: &'a Container<'a>,
     current: usize,
