@@ -1,8 +1,8 @@
-
 use chrono::{DateTime as ChronoDateTime, FixedOffset};
 use container::Container;
 
-#[derive(Debug, Clone, PartialEq)]
+/// StringType defines the various types of strings in an `Item`.
+#[derive(Debug, Copy, Clone, PartialEq)]
 pub enum StringType {
     SLB,
     MLB,
@@ -10,6 +10,7 @@ pub enum StringType {
     MLL,
 }
 
+/// Trivia reprsents metadata about an `Item`.
 #[derive(Debug, Default, Clone, PartialEq)]
 pub struct Trivia<'a> {
     /// Whitespace before a value.
@@ -23,7 +24,7 @@ pub struct Trivia<'a> {
 }
 
 impl<'a> Trivia<'a> {
-    /// Creates an empty Trivia with windows-style newline.
+    /// Creates an empty Trivia
     pub fn empty() -> Trivia<'a> {
         Trivia {
             indent: "",
@@ -38,6 +39,7 @@ impl<'a> Trivia<'a> {
 /// The type of a key.
 /// Keys can be bare or follow the same rules as
 /// either string type.
+#[derive(Copy)]
 pub enum KeyType {
     Bare,
     Basic,

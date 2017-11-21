@@ -10,13 +10,6 @@ branches:
     - /^v\d+\.\d+\.\d+.*$/
     - master
 
-env:
-  global:
-    # - Create a crates_io token. Go to: https://crates.io/me/new
-    # - Encrypt it: `travis encrypt "CRATES_IO_TOKEN=0123456789012345678901234567890123456789"
-    # - Paste the output here
-    secure: "OvsiZjLf4HdxRAtd3VEPE2mQdZIqhNMdIa0JhGPS6s/JRSS7WmdNhs+PzdK8BTXg8OqWhpx0mP2dqqItibXy8bA1iuGwP03SomasrfiEWNC9OaFLaU/A0JTl/hEEOC37Va9QElG6XThb1os2aY2o1PZ76cc+NlcV9hiwavdpKZfT5zaW30GrtNF2It1agx1T2SRGPdy/tTZBBo/bEhf3+VF+bDk4z4/lqja3RTLq0KdZouXQAaw12vSiEPOcmli/VOQZa0kEPqk2mAktV6vE99Qt3Mcj2k2azQYKOeoxfzjh3qpoPyD9O0jxcW+penJG4NVPslmzwvwSEl5ZIGuuFSgk+1O9+qFsmvFF5Z1c4GZJW6EuRX1g9lxlbVvAMk9j1cpfXNB90OuEhliMo5mCtPGAxVn4WYzliC1hudxEonz5dOX4NIiFsDJet8QubwWw+DoVBF8sX35UEq5D9sEY2jF6JSN3EIkJFepdPJ0Z2Q+CGvqepik5S1Fq9srLLEmVAqeyuGlZn9DxY+WNOFX0nMJvfcpO5DZKN13fsfBUQhHUGCr73ZEVVabr0YSWFIbc9J2i/DwLpIpTNbpklEERGIOsXEl1mPBTC4YGtrHgVO+kf2HY/eDm/c8pHIhbXpDXy2w7HV3CIjIqTjnmqyeUkKTqYCuT9VU5cSYfg/ZtH0g="
-
 before_script:
   - pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
 
@@ -37,6 +30,7 @@ deploy:
   # - Paste the output down here
   api_key:
     secure: "IDm3Oc3bmIL4/6zixovwkuTkbinqWnKdLfeuKTtHqT4ZbVy+rxTDQBgLGfVngymjciHWkJnvQ8/2nT3/KW4MPNY9Sqt3NfWvO7vj9cXypeNeJ4xFrVK49F7CMM4KTCeSMlDKR1C0TVYGgxFIViLtBw/imivl9fk6J489eKv36sA="
+  
   file: target/package/Molten-$TRAVIS_TAG.crate
   skip_cleanup: true
   on:
@@ -72,3 +66,14 @@ before_cache:
 notifications:
   email:
     on_success: never
+
+env:
+  global:
+    # - Create a crates.io token. Go to: https://crates.io/me/new
+    # - Encrypt it: `travis encrypt "CRATES_IO_TOKEN=0123456789012345678901234567890123456789"
+    # - Paste the output here
+    secure: "OvsiZjLf4HdxRAtd3VEPE2mQdZIqhNMdIa0JhGPS6s/JRSS7WmdNhs+PzdK8BTXg8OqWhpx0mP2dqqItibXy8bA1iuGwP03SomasrfiEWNC9OaFLaU/A0JTl/hEEOC37Va9QElG6XThb1os2aY2o1PZ76cc+NlcV9hiwavdpKZfT5zaW30GrtNF2It1agx1T2SRGPdy/tTZBBo/bEhf3+VF+bDk4z4/lqja3RTLq0KdZouXQAaw12vSiEPOcmli/VOQZa0kEPqk2mAktV6vE99Qt3Mcj2k2azQYKOeoxfzjh3qpoPyD9O0jxcW+penJG4NVPslmzwvwSEl5ZIGuuFSgk+1O9+qFsmvFF5Z1c4GZJW6EuRX1g9lxlbVvAMk9j1cpfXNB90OuEhliMo5mCtPGAxVn4WYzliC1hudxEonz5dOX4NIiFsDJet8QubwWw+DoVBF8sX35UEq5D9sEY2jF6JSN3EIkJFepdPJ0Z2Q+CGvqepik5S1Fq9srLLEmVAqeyuGlZn9DxY+WNOFX0nMJvfcpO5DZKN13fsfBUQhHUGCr73ZEVVabr0YSWFIbc9J2i/DwLpIpTNbpklEERGIOsXEl1mPBTC4YGtrHgVO+kf2HY/eDm/c8pHIhbXpDXy2w7HV3CIjIqTjnmqyeUkKTqYCuT9VU5cSYfg/ZtH0g="
+    # - Create a coveralls.io token. Go to: https://coveralls.io/account
+    # - Encrypt it: `travis encrypt "COVERALLS_TOKEN=0123456789012345678901234567890123456789"
+    # - Paste the output here
+    secure: "i392RK+tofZVeb/JLYHLMcNpjTketR7HDxNU25f5WvNYi4eMy0o48orW17OnIEwO5/bWmoPfQ1xhg9ikb0nnkIfzyF9m3Lb7hj1dgDWJc9pb4jZD7s9N0TitXwhEWIPOcMZlFhoIIDp0yv/5K/eYgPnJwhwFPWfH53/AqsX30gmEsflMdyegn2f/836IZxIa/D4X3s3JhlBce2Bmi3Xip/uw9Rb9ReVQj6oeWYKU0cKT9FU9liL764Fvze6gwaaQrYbhYti2OlY8IDBtajqQDF28b563tHiYG0ztwM8TWnw5XrNgjV99x2BJ900zhzZ2dY0HhnMV2mSVAhuZWj6MdAA+fSBSA/eS4EexK93g4acwydyIxCOBs+EMRU8QaukJA4z0JKZmLwyT7nRdXM+fbEYI27acd4lyqT8WUROKIiNHGKAutYkbytczYyfxv3hdS8LyYy6LXHwNpLo2FZd2c64DJ4KHqX5r8HpBnPtRDPTnAX7j8/HBAT1KUkJAzy2pZVdKr/CAKhEmnYCN2mZR4W0P2efY+3XTDfJA40a8nSxxQqilLRRzsfIGM9tqENGE4DuCTXAK5QYxK5dQ0gq+CuP6CSeAUGNsjFBOc48OTJBbOerSqwELIc9dnA1XinVoHB8NcT7naXMoL2uT9PEAR1FU6yfFWma42bPIwRX7I/Y="

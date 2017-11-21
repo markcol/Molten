@@ -2,6 +2,11 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/LeopoldArkham/Molten.svg?branch=master)](https://travis-ci.org/LeopoldArkham/Molten)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/github/LeopoldArkham/Molten?svg=true)](https://ci.appveyor.com/project/LeopoldArkham/Molten)
+
+[![Latest Version](https://img.shields.io/crates/v/molten.svg)](https://crates.io/crates/molten)
+[![Documentation](https://docs.rs/molten/badge.svg)](https://docs.rs/molten)
+[![Coverage Status](https://coveralls.io/repos/LeopoldArkham/Molten/badge.svg?branch=master&service=github)](https://coveralls.io/github/LeopoldArkham/Molten?branch=master)
+
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

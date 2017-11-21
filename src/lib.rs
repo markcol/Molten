@@ -9,7 +9,7 @@
         )]
 
 #![warn(
-        missing_docs,
+        // missing_docs,
         missing_debug_implementations,
         missing_copy_implementations,
         trivial_casts, 
@@ -24,7 +24,10 @@
         unused_imports
         )]
 
-#![doc(test(attr(allow(unused_variables), deny(warnings))))]
+#![doc(
+        issue_tracker_base_url="https://github.com/LeopoldArkham/Molten/issues/",
+        test(attr(allow(unused_variables), deny(warnings)))
+        )]
 
 #[macro_use]
 extern crate pretty_assertions;

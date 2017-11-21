@@ -523,7 +523,7 @@ impl<'a> Parser<'a> {
             '[' => {
                 println!("AOT");
                 self.inc();
-                true as isAOT
+                true
             }
             _ => false,
         };
