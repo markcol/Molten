@@ -1,11 +1,14 @@
 [package]
 name = "Molten"
 version = "0.1.0"
-authors = ["LeopoldArkham <leopold.arkham@gmail.com>"]
+authors = [
+    "Leopold Arkham <leopold.arkham@gmail.com>",
+    "Eric Huss <eric@huss.org>"
+    ]
 readme = "README.md"
 repository = "https://github.com/LeopoldArkham/Molten"
 homepage = "https://github.com/LeopoldArkham/Molten"
-documentation = "https://github.com/LeopoldArkham/Motlen"
+documentation = "https://docs.rs/molten"
 description = """
 Molten is a lossless TOML parser that preserves all comments, indentations, 
 whitespace and internal element ordering, and makes all of these fully 
@@ -14,7 +17,19 @@ current TOML parser used in cargo-edit, and, eventually, adding that
 functionality to Cargo itself.
 """
 categories = ["config", "encoding", "parser-implementations"]
-license = "MIT/Apache-2.0"
+keywords = ["toml", "parser", "config"]
+license = "Apache-2.0/MIT"
+
+# Set to true to enable publishing to crates.io
+publish = false
+
+exclude = [
+    ".travis.yml",
+    "appveyor.yml",
+    "parsed.txt",
+    "reconstructed.txt",
+    ".*",
+]
 
 [badges]
 travis-ci = { repository = "LeopoldArkham/Molten" }
@@ -24,14 +39,8 @@ appveyor = { repository = "LeopoldArkham/Molten" }
 chrono = "0.3.0"
 pretty_assertions = "0.4.0"
 error-chain = "0.11.0"
-clippy= {version = "*", optional = true}
 
 [dev-dependencies]
 test-case-derive = "0.1.4"
 pretty_assertions = "0.4.0"
 lazy_static = "0.2"
-
-
-[features]
-default = []
-dev = [ "clippy" ]
