@@ -1,4 +1,4 @@
-target
+target/
 Cargo.lock
 *.rs.bk
 tests/res.toml
@@ -7,5 +7,9 @@ tests/res.toml
 *.txt
 \#*\#
 *~
-
-
+*.exe
+*.rs.fmt
+*.o
+*.so
+*.rlib
+*.dll
