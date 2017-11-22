@@ -35,17 +35,17 @@ impl<'a> Trivia<'a> {
     }
 }
 
-#[derive(Debug, Hash, PartialEq, Eq, Clone)]
 /// The type of a key.
 /// Keys can be bare or follow the same rules as
 /// either string type.
-#[derive(Copy)]
+#[derive(Debug, Hash, PartialEq, Eq, Clone, Copy)]
 pub enum KeyType {
     Bare,
     Basic,
     Literal,
 }
 
+/// Key represents a mapping between types and values.
 #[derive(Hash, Clone)]
 pub struct Key<'a> {
     pub t: KeyType,
@@ -169,6 +169,7 @@ impl<'a> Item<'a> {
         }
     }
 
+    /// Return a string representation of the Item.
     pub fn as_string(&self) -> String {
         use self::Item::*;
         match *self {
@@ -229,6 +230,7 @@ impl<'a> Item<'a> {
         }
     }
 
+    /// Return a reference to the Trivia for the Item.
     pub fn meta(&self) -> &Trivia<'a> {
         use self::Item::*;
         match *self {
@@ -247,6 +249,7 @@ impl<'a> Item<'a> {
         }
     }
 
+    /// Return a mutable copy of the Item Trivia.
     pub fn meta_mut(&mut self) -> &mut Trivia<'a> {
         use self::Item::*;
         match *self {

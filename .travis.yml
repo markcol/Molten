@@ -2,6 +2,8 @@ language: rust
 sudo: false
 
 rust:
+  - stable
+  - beta
   - nightly
 
 branches:
@@ -36,7 +38,7 @@ deploy:
   on:
     tags: true
     branch: master
-    condition: "$TRAVIS_RUST_VERSION = nightly"
+    condition: "$TRAVIS_RUST_VERSION = stable"
 
 after_deploy:
   # Publish updated documentation
@@ -45,7 +47,7 @@ after_deploy:
   - travis-cargo coveralls --no-sudo
   # Publish new crate to crates.io
   - |
-     [ $TRAVIS_RUST_VERSION = nightly ] &&
+     [ $TRAVIS_RUST_VERSION = stable ] &&
      [ $TRAVIS_BRANCH = master ] &&
      [ $TRAVIS_PULL_REQUEST = false ] &&
      cargo publish --token ${CRATES_IO_TOKEN}
