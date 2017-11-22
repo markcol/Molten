@@ -2,13 +2,9 @@ language: rust
 sudo: false
 
 rust:
-  - stable
-  - beta
+  # - stable
+  # - beta
   - nightly
-
-matrix:
-  allow_failures:
-    rust: nightly
 
 before_script:
   - pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
@@ -37,7 +33,7 @@ deploy:
   on:
     tags: true
     branch: master
-    condition: "$TRAVIS_RUST_VERSION = stable"
+    condition: "$TRAVIS_RUST_VERSION = nightly"
 
 after_deploy:
   # Publish updated documentation
@@ -46,7 +42,7 @@ after_deploy:
   - travis-cargo coveralls --no-sudo
   # Publish new crate to crates.io
   - |
-     [ $TRAVIS_RUST_VERSION = stable ] &&
+     [ $TRAVIS_RUST_VERSION = nightly ] &&
      [ $TRAVIS_BRANCH = master ] &&
      [ $TRAVIS_PULL_REQUEST = false ] &&
      cargo publish --token ${CRATES_IO_TOKEN}
