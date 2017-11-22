@@ -6,11 +6,16 @@ rust:
   - beta
   - nightly
 
+matrix:
+  allow_failures:
+    rust: nightly
+
 before_script:
   - pip install 'travis-cargo<0.2' --user && export PATH=$HOME/.local/bin:$PATH
 
 script:
-  - cargo test
+  - cargo build --verbose --all
+  - cargo test --verbose --all
   - rustdoc --test README.md -L target
   - cargo doc --no-deps || echo "skipping cargo doc"
 
